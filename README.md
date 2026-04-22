@@ -19,4 +19,4 @@
 
 ### 2. Forward
 - **描述：** forward 分流。
-- **安装：** [🚀 一键导入到 Loon](loon://import?plugin=https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/plugin/JD.lpx)
+- **安装：** [🚀 一键导入到 Loon](https://www.nsloon.com/openloon/import?rules=https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/rule/Forward.lsr)
