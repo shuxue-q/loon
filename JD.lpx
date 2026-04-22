@@ -1,0 +1,41 @@
+#!name = 京东
+#!desc = 1.过滤京东广告；2.历史比价信息。（首次使用请先打开【慢慢买App-我的】，提示【获取ck成功🎉】即可正常比价。）
+#!openUrl = https://apps.apple.com/app/id414245413
+#!author = RuCu6, Maasea, MuTu, 苍井灰灰, mw418, 可莉🅥
+#!tag = 去广告, 功能增强
+#!loon_version = 3.3.9(945)
+#!homepage = https://hub.kelee.one
+#!icon = https://raw.githubusercontent.com/sooyaaabo/IconLibrary/main/App/Jingdong.png
+#!date = 2026-04-21 19:40
+
+[Argument]
+Manmanbuy-Cookie = switch, true, false, tag = [京东比价]获取慢慢买Cookie, desc = 首次使用请先打开【慢慢买】APP，提示【获取ck成功🎉】即可正常比价。
+JDPrice-Enable = switch, true, false, tag = [京东比价]开启历史价格, desc = 点击商品详情页即可直接查看历史价格。
+
+[Rule]
+# 拦截调试与诊断上报
+URL-REGEX, "^http:\/\/\w{32}\.jddebug\.com\/diagnose\?", REJECT
+
+[Rewrite]
+# 去广告 URL 重写规则
+^https?:\/\/m\.360buyimg\.com\/mobilecms\/s1125x2436_jfs reject-200
+^http:\/\/\w{32}\.jddebug\.com\/diagnose\? reject
+^https:\/\/api\.m\.jd\.com\/\?loginType=11 reject-dict
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=getWidgetV1052 reject
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:searchBoxWord|stationPullService|uniformRecommend[06]) reject-dict
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising response-body-replace-regex jdLiteAdvertisingVO sooyaaabo
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=basicConfig response-body-json-replace data.JDMessage.socketmonitor.isSocketEstablishedAhead 0 data.JDMessage.socketmonitor.isSocketReport 0 data.JDHttpToolKit.httpdns.httpdns 0
+
+[Script]
+http-response ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(?:deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome) script-path = https://kelee.one/Resource/JavaScript/JD/JD_remove_ads.js, requires-body = true, tag = [京东]移除广告
+
+http-response ^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=lite_advertising script-path = https://loon.103516.xyz/Script/CommonScript/replace-body.js, argument = jdLiteAdvertisingVO -> sooyaaabo, requires-body = true, tag = [京东]移除京东极速版广告
+
+# 捕获慢慢买 Cookie
+http-request ^https?:\/\/apapia-sqk-weblogic\.manmanbuy\.com\/baoliao\/center\/menu$ script-path = https://kelee.one/Resource/JavaScript/JD/JD_Price.js, requires-body = true, timeout = 10, tag = [京东比价]获取慢慢买Cookie, enable={Manmanbuy-Cookie}
+
+# 京东商品页显示比价 
+http-response ^https?:\/\/in\.m\.jd\.com\/product\/graphext\/\d+\.html script-path = https://kelee.one/Resource/JavaScript/JD/JD_Price.js, requires-body = true, timeout = 10, tag = [京东比价]详情页面显示, enable={JDPrice-Enable}
+
+[MitM]
+hostname = api.m.jd.com, in.m.jd.com, apapia-sqk-weblogic.manmanbuy.com, m.360buyimg.com
