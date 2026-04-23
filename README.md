@@ -15,8 +15,12 @@
 
 ### 1. 京东
 - **描述：** 去除京东广告，功能增强。
-- **安装：** [🚀 一键导入到 Loon](loon://import?plugin=https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/plugin/JD.lpx)
+- **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/plugin/JD.lpx`
 
-### 2. Forward
+### 2. Flightradar24
+- **描述：** 去除flightradar24广告。
+- **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/plugin/flightradar24.lpx`
+
+### 3. Forward
 - **描述：** forward 分流。
-- **安装：** [🚀 一键导入到 Loon](https://www.nsloon.com/openloon/import?rules=https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/rule/Forward.lsr)
+- **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/rule/Forward.lsr`
