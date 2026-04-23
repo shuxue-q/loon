@@ -21,6 +21,10 @@
 - **描述：** 去除flightradar24广告。
 - **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/plugin/flightradar24.lpx`
 
+### 3. 航旅纵横
+- **描述：** 去除航旅纵横广告。
+- **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/plugin/Umetrip.lpx`
+
 ### 3. Forward
 - **描述：** forward 分流。
 - **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/rule/Forward.lsr`
