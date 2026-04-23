@@ -24,7 +24,11 @@
 ### 3. 航旅纵横
 - **描述：** 去除航旅纵横广告。
 - **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/plugin/Umetrip.lpx`
+  
+### 4. 12306
+- **描述：** 去除12306广告，解决卡开屏问题
+- **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/plugin/12306.lpx`
 
-### 3. Forward
+### 5. Forward
 - **描述：** forward 分流。
 - **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/rule/Forward.lsr`
