@@ -32,3 +32,6 @@
 ### 5. Forward
 - **描述：** forward 分流。
 - **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/rule/Forward.lsr`
+### 6. 同花顺
+- **描述：** 同花顺去广告
+- **安装：** `https://raw.githubusercontent.com/shuxue-q/loon/refs/heads/main/plugin/tonghuashun.lpx`
